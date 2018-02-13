@@ -5,17 +5,18 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/gorilla/mux"
 )
 
 func main() {
-	fmt.Print("Listing at 8082....")
+	fmt.Print("Listing at ")
 	router := mux.NewRouter()
 	router.HandleFunc("/emp", handleEmp).Methods("GET")
 	router.HandleFunc("/emp/{ohr}", handleEmpFind).Methods("GET", "DELETE")
 	router.HandleFunc("/emp", handleEmpPOST).Methods("POST")
-	http.ListenAndServe(":8082", router)
+	http.ListenAndServe(":"+os.Getenv("PORT"), router)
 }
 
 /*
