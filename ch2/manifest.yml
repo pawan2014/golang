@@ -1,0 +1,7 @@
+---
+applications:
+  - name: site1
+    buildpack: https://github.com/cloudfoundry/go-buildpack.git
+    env:
+      GOVERSION: go1.8
+      GOPACKAGENAME: site1
